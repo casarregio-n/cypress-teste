@@ -22,7 +22,7 @@ export default function Inicio() {
               alt="Gráficos e uma pessoa com dinheiro na mão"
             />
           </div>
-          <div className={estilos.vantagens}>
+          <div className={estilos.vantagens} data-test="div2">
             <h2 data-test="titulo-h2">Vantagens do nosso banco:</h2>
             <div className={estilos.vantagens__itens}>
               <div className={estilos.vantagens__item}>

@@ -57,4 +57,8 @@ describe('imagens', () => {
   it('Deve renderizar as imagens corretamente', () => {
   cy.getByData('imagem').should("be.visible")
   })
+  it('indentificar texto conta', () => {
+    cy.indentificatexto('div2').find("h3").should("contain", "Conta e cartão gratuitos")
+  })
 })
+
