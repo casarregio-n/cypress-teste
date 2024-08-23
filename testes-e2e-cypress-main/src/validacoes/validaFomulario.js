@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 async function validaDadosFormulario(user) {
-  const schemaLogin = yup.object().shape({
+  let schemaLogin = yup.object().shape({
     email: yup
       .string()
       .email('O email digitado é inválido')
@@ -9,7 +9,7 @@ async function validaDadosFormulario(user) {
     senha: yup.string().required('O campo de senha é obrigatório'),
   });
 
-  const schemaCadastro = yup.object().shape({
+  let schemaCadastro = yup.object().shape({
     nome: yup.string().required('O campo de nome é obrigatório'),
     email: yup
       .string()
@@ -19,19 +19,12 @@ async function validaDadosFormulario(user) {
   });
 
   try {
-    // Determina qual schema usar com base na presença do nome
-    if (user.nome) {
-      await schemaCadastro.validate(user);
-    } else {
-      await schemaLogin.validate(user);
-    }
+    if (user.nome === '') await schemaCadastro.validate(user);
+    if (!user.nome) await schemaLogin.validate(user);
 
     return { valid: true, path: '', message: 'Validação foi um sucesso!' };
   } catch (erro) {
-    // Retorna uma mensagem de erro
-    return { valid: false, path: erro.path || '', message: erro.errors.join(', ') };
+    return { valid: false, path: erro.path, message: erro.errors };
   }
 }
-
 export { validaDadosFormulario };
-
