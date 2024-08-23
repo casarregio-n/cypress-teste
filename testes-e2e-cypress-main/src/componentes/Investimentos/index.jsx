@@ -20,7 +20,7 @@ export default function Investimentos() {
             R$ 700.000,00
           </Box>
         </div>
-        <h3>Estatísticas</h3>
+        <h3 data-test='investimento'>Estatísticas</h3>
         <div className={estilos.grafico}>
           <img src={grafico} alt="Gráfico dos investimentos" />
         </div>

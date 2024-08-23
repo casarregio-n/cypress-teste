@@ -42,7 +42,8 @@ export default function Formulario({ realizarTransacao }) {
         </select>
       </div>
       <div className={estilos.areaValor}>
-        <label htmlFor="valor" className={estilos.legenda}>
+        <label htmlFor="valor" className={estilos.legenda} data-test='inicio'>
+          
           Valor
         </label>
         <input
